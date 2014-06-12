@@ -1,0 +1,109 @@
+/*
+ * Copyright 2003-2012 FandianPF (Stephen Gaito)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// Gradle build configuration for the antlr4-gradle-regressionTestPlugin
+//
+// This gradle build configuraiton publishes the resulting plugin jar
+// into an ivy repository on local disk.  This means that you need to 
+// place something like the following into the gradle.properties file
+// located in your personal .gradle directory:
+//
+// fandianpfPublishRepo=<<Path to your local repository>>
+// fandianpfDownloadRepo=http://fandianpf.github.io/ivyRepo
+//
+
+buildscript {
+  repositories {
+    ivy {
+      url fandianpfDownloadRepo
+    }
+    maven {
+      name 'JFrog OSS snapshot repo'
+      url 'https://oss.jfrog.org/oss-snapshot-local/'
+    }
+    mavenCentral()
+
+  }
+
+  dependencies {
+    classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1-SNAPSHOT'
+    classpath 'org.fandianpf:antlr4-gradle-regressionTestPlugin:0.1'
+  }
+}
+
+apply plugin: 'antlr4'
+apply plugin: 'antlr4test'
+apply plugin: 'groovy'
+apply plugin: 'ivy-publish'
+
+repositories {
+  ivy {
+    url fandianpfDownloadRepo
+  }
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  compile localGroovy()
+  compile gradleApi()
+  compile 'org.antlr:antlr4:4.2.2'
+  compile 'org.fandianpf:antlr4-regressionTestRig:0.1'
+}
+
+antlr4 {
+  
+  extraArgs = ["-package", "org.fandianpf.testParser"]
+  
+  // make the Java compile task depend on the antlr4 task
+  compileJava.dependsOn antlr4
+
+  // add the generated source files to the list of java sources
+  sourceSets.main.java.srcDirs += antlr4.output
+
+  // add antlr4 to classpath
+  configurations {
+     compile.extendsFrom antlr4
+  }
+}
+
+antlr4test {
+  
+  grammarPackage = 'org.fandianpf.testParser'
+  grammarName    = 'CSV'
+  startRuleName  = 'file'
+  testDocs       = fileTree(dir: 'src/test/resources/testDocs',
+                            include: '**/*.csv')
+
+  source = antlr4.source
+  
+  antlr4test.getOutputs().upToDateWhen {
+    false
+  }
+  
+  trace = false                            
+  dependsOn compileJava
+  
+  antlr4test.classpath(files("$buildDir/classes/main"))
+  
+  configurations {
+    compile.extendsFrom antlr4test
+  }
+}
+
+test {
+  dependsOn antlr4test
+}

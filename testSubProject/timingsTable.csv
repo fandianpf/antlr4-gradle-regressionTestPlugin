@@ -1,0 +1,5 @@
+"testDocName","type","min","mean","stdDev","max","values"
+"example1.csv","t0Lexer",10,11.333333333333334,1.5275252316519468,13,10,11,13
+"example1.csv","t1Parser",5,5.333333333333333,0.5773502691896258,6,5,6,5
+"example1.csv","t2Totals",15,16.666666666666668,1.5275252316519465,18,15,17,18
+"example1.csv","t3Errors",0,0.0,0.0,0,0,0,0
