@@ -79,7 +79,8 @@ properties as part of its configuration:
 | sll              | A boolean which if true will tell the parser to use the faster SLL(*) parsing mode rather than the full ALL(*) mode. Default: false |
 | diagnostics      | A boolean which if true will capture the parser warning messages to the results file. Default true |
 | encoding         | A string whose value denotes the encoding used to read/lex the input files. Default: UTF-8 |
-| timingsTablePath | A Gradle File pointing to the timingsTable file to be updated. If no timingsTable file currently exists a new one will be created. Default: timingsTable.csv. NOTE: this file is not stored relative to the output directory. |
+| metricsTablePath | (version 0.2) A Gradle File pointing to the metricsTable file to be updated. If no metricsTable file currently exists a new one will be created. Default: metricsTable.csv. NOTE: this file is not stored relative to the output directory. |
+| timingsTablePath | (version 0.1) A Gradle File pointing to the timingsTable file to be updated. If no timingsTable file currently exists a new one will be created. Default: timingsTable.csv. NOTE: this file is not stored relative to the output directory. |
 
 # Use
 

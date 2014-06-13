@@ -81,9 +81,13 @@ publishing {
 
       organisation 'org.fandianpf'
       module 'antlr4-gradle-regressionTestPlugin'
-      revision '0.1'
+      revision '0.2'
 
       from components.java
+      
+      artifact(project.file("HISTORY.md")) {
+        classifier = 'releaseNotes'
+      }
     }
   }
 }

@@ -71,7 +71,7 @@ class Antlr4TestTask extends JavaExec {
     
     @Input
     @Optional
-    String timingsTablePath = project.file('timingsTable.csv')    
+    String metricsTablePath = project.file('metricsTable.csv')    
 
     Antlr4TestTask() {
     	main = 'org.fandianpf.antlr4.regressionTestRig.RegressionTestRig'
@@ -98,8 +98,8 @@ class Antlr4TestTask extends JavaExec {
         if (!encoding.isEmpty()) {
             args << '-encoding' << encoding
         }
-        if (!timingsTablePath.isEmpty()) {
-            args << '-timings' << timingsTablePath
+        if (!metricsTablePath.isEmpty()) {
+            args << '-metrics' << metricsTablePath
         }
         args << '-sourceDir' << testDocs.getDir()
         args << '-outputDir' << output

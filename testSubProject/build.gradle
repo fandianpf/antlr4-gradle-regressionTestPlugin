@@ -40,7 +40,7 @@ buildscript {
 
   dependencies {
     classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1-SNAPSHOT'
-    classpath 'org.fandianpf:antlr4-gradle-regressionTestPlugin:0.1'
+    classpath 'org.fandianpf:antlr4-gradle-regressionTestPlugin:0.2'
   }
 }
 
@@ -61,7 +61,7 @@ dependencies {
   compile localGroovy()
   compile gradleApi()
   compile 'org.antlr:antlr4:4.2.2'
-  compile 'org.fandianpf:antlr4-regressionTestRig:0.1'
+  compile 'org.fandianpf:antlr4-regressionTestRig:0.2'
 }
 
 antlr4 {
