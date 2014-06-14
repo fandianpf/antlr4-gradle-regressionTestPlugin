@@ -38,7 +38,7 @@ Add the following snippet to your build.gradle file:
 buildscript {
   repositories {
     ivy {
-      url 'http://fandianpf.github.io/ivyRepo/"
+      url 'http://fandianpf.github.io/ivyRepo/'
     }
     maven {
       name 'JFrog OSS snapshot repo'
@@ -49,7 +49,7 @@ buildscript {
 
   dependencies { 
     classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1-SNAPSHOT'
-    classpath 'org.fandianpf:antlr4-gradle-regressionTestPlugin:0.1'
+    classpath 'org.fandianpf:antlr4-gradle-regressionTestPlugin:0.2'
   }
 }
 
@@ -114,6 +114,16 @@ from the testSubProject.
 To execute the antlr4test task type:
 
     gradle antlr4test
+
+# Release process
+
+To release, bump the versions of both antlr4-gradle-regressionTestPlugin and the
+antlr4-regressionTestRig in both build.gradle files (in both the main and
+testSubProject) as well as in the Antrl4TestPlugin.groovy file.
+
+Then type:
+
+    gradle publish
 
 # License
 

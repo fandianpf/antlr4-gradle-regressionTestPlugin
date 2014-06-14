@@ -40,7 +40,7 @@ buildscript {
 
   dependencies {
     classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1-SNAPSHOT'
-    classpath 'org.fandianpf:antlr4-gradle-regressionTestPlugin:0.2'
+    classpath 'org.fandianpf:antlr4-gradle-regressionTestPlugin:0.3'
   }
 }
 

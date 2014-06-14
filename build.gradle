@@ -61,6 +61,7 @@ task testCopy(type: Copy) {
 
 jar {
   from "LICENSE"
+  from "HISTORY.md"
 }
 
 publishing {
@@ -81,7 +82,7 @@ publishing {
 
       organisation 'org.fandianpf'
       module 'antlr4-gradle-regressionTestPlugin'
-      revision '0.2'
+      revision '0.3'
 
       from components.java
       
