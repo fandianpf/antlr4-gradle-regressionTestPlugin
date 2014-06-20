@@ -78,6 +78,9 @@ properties as part of its configuration:
 | trace            | A boolean which if true will print the trace of the parser rule building. Output currently goes to System.out. Default: false |
 | sll              | A boolean which if true will tell the parser to use the faster SLL(*) parsing mode rather than the full ALL(*) mode. Default: false |
 | diagnostics      | A boolean which if true will capture the parser warning messages to the results file. Default true |
+| primaryIndent    | A string whose value is the primary indent used for each recursive level in the parse tree output. Default ". " |
+| secondaryIndent  | A string whose value is the secondary indent used for each recursive level in the parse tree output. Default ", " |
+| indentCycle      | An int whose value is used to determine when the secondary indent string should be used. The last indent of every indentCycle will use the seconary indent string. This makes it easier to determine the depth of the parse tree. Default: 5 |
 | encoding         | A string whose value denotes the encoding used to read/lex the input files. Default: UTF-8 |
 | metricsTablePath | (version 0.2) A Gradle File pointing to the metricsTable file to be updated. If no metricsTable file currently exists a new one will be created. Default: metricsTable.csv. NOTE: this file is not stored relative to the output directory. |
 | timingsTablePath | (version 0.1) A Gradle File pointing to the timingsTable file to be updated. If no timingsTable file currently exists a new one will be created. Default: timingsTable.csv. NOTE: this file is not stored relative to the output directory. |

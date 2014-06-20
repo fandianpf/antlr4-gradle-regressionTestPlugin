@@ -35,7 +35,7 @@ class Antlr4TestPlugin implements Plugin<Project> {
         }
         project.dependencies {
             antlr4test 'org.antlr:antlr4:4.2.2'
-            antlr4test 'org.fandianpf:antlr4-regressionTestRig:0.2'
+            antlr4test 'org.fandianpf:antlr4-regressionTestRig:0.3'
         }
 
         project.task('antlr4test', type:Antlr4TestTask)

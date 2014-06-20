@@ -82,7 +82,7 @@ publishing {
 
       organisation 'org.fandianpf'
       module 'antlr4-gradle-regressionTestPlugin'
-      revision '0.3'
+      revision '0.4'
 
       from components.java
       

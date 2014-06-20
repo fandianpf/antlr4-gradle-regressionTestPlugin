@@ -71,6 +71,18 @@ class Antlr4TestTask extends JavaExec {
     
     @Input
     @Optional
+    String primaryIndent = ". "
+    
+    @Input
+    @Optional
+    String secondaryIndent = ", "
+    
+    @Input
+    @Optional
+    int indentCycle = 5
+        
+    @Input
+    @Optional
     String metricsTablePath = project.file('metricsTable.csv')    
 
     Antlr4TestTask() {
@@ -95,6 +107,15 @@ class Antlr4TestTask extends JavaExec {
         args << (      trace ? '-trace'       : '')
         args << (        sll ? '-sll'         : '')
         args << (diagnostics ? '-diagnostics' : '')
+        if (!primaryIndent.isEmpty()) {
+          args << '-primaryIndent' << primaryIndent
+        }
+        if (!secondaryIndent.isEmpty()) {
+          args << '-secondaryIndent' << secondaryIndent
+        }
+        if (0 < indentCycle ) {
+          args << '-indentCycle' << indentCycle
+        }
         if (!encoding.isEmpty()) {
             args << '-encoding' << encoding
         }
